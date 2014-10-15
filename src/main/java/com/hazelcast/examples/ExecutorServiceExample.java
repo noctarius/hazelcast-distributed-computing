@@ -35,7 +35,8 @@ public class ExecutorServiceExample {
         try {
 
             IExecutorService executorService = hazelcastInstance.getExecutorService("default");
-            Runnable runnable = wrap((hz) -> System.out.println("Hello from Node: " + hz.getCluster().getLocalMember().getUuid()));
+            Runnable runnable = wrap((hz) -> System.out.println("Hello from Node: "
+                    + hz.getCluster().getLocalMember().getUuid()));
             executorService.executeOnAllMembers(runnable);
 
         } finally {
